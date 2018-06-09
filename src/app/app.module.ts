@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import 'form-generator';
+import '@ui-guys/form-generator';
 
 @NgModule({
     declarations: [
