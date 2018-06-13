@@ -1,7 +1,205 @@
 <cwc-styles></cwc-styles>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-12 mb-4">
+        <div class="col-lg-8 mb-4" style="overflow-y: scroll; height:100vh; background-color: #eee">
+            <p>The HTML structure of the Json Schema Form is the following:</p>
+            <pre>
+                <code>
+                    	&lt;my-dynamic-form [schema]="schema" [form]="form" [ajv]="ajv"&gt;
+                        	&#9;&lt;my-input for="integer"&gt;&lt;/my-input&gt;
+                        	&#9;&lt;my-input for="string"&gt;&lt;/my-input&gt;
+                        	&#9;&lt;my-input for="object"&gt;&lt;/my-input&gt;
+                        	&#9;&lt;my-dropdown for="array"&gt;&lt;/my-dropdown&gt;
+                        	&#9;&lt;my-checkbox for="boolean"&gt;&lt;/my-checkbox&gt;
+                    	&lt;/my-dynamic-form&gt;
+                </code>
+            </pre>
+
+            <p>The root <code>&lt;my-dynamic-form /&gt;</code> accepts 3 props:</p>
+            <ul>
+                <li>[schema]: Form definition object.</li>
+                <li>[form]: Form object.</li>
+                <li>[ajv]: JSON Schema Validator. https://github.com/epoberezkin/ajv</li>
+            </ul>
+
+            <p><strong>Schema Object:</strong></p>
+            <p>The most important and mandatory properties of the object are the <code>"type"</code> and <code>"$id"</code> property.</p>
+            <p><code>"$id"</code> must be unique for every property.</p>
+            <p><code>"type"</code> accepts values like: string, integer, boolean, array and object.</p>
+            <p>Any type, except <code>&#123; "type": "object" &#125;</code> can have properties like:</p>
+            <ul>
+                <li><code>"title"</code> &#61;&gt; Specifies extra information about an element.</li>
+                <li><code>"description"</code> &#61;&gt; An explanation about the purpose of the instance.</li>
+                <li><code>"default"</code></li>
+                <li><code>"examples"</code> &#61;&gt; "examples" is an array of strings where you can offer example of values that the input accepts.</li>
+            </ul>
+
+            <br>
+
+            <p><i>Types:</i></p>
+            <ul>
+                <li><code>&#123; "type": "string" &#125;</code> &#61;&gt; The string type is used for strings of text. It may contain Unicode characters.</li>
+                <li><code>&#123; "type": "integer" &#125;</code> &#61;&gt; Used for any integers type numbers.</li>
+                <li><code>&#123; "type": "boolean" &#125;</code> &#61;&gt; true or false values. Used for checkbox type inputs.</li>
+                <li><code>&#123; "type": "array" &#125;</code> &#61;&gt; Accepts only "$id" and "items" properties. "items" is an object of "type" string or integer. Used for checkbox type inputs. Used for dropdown type inputs.</li>
+                <li><code>&#123; "type": "object" &#125;</code> &#61;&gt; Requires a mandatory property, "properties". The properties (key-value pairs) on an object are defined using the properties keyword. The value of properties is an object, where each key is the name of a property and each value is a JSON schema used to validate that property.
+                    <p>For example, let’s say we want to define a simple schema for an address made up of a number, street name and street type:</p>
+                    <pre>
+                        <code>
+                            &#123;
+                                &#9;"type": "object",
+                                &#9;"properties": &#123;
+                                    &#9;&#9;"number":      &#123; "type": "number" &#125;,
+                                    &#9;&#9;"street_name": &#123; "type": "string" &#125;,
+                                    &#9;&#9;"street_type": &#123; "type": "string" &#125;
+                                &#9;&#125;
+                            &#125;
+                        </code>
+                    </pre>
+                    <p>By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword.</p>
+                    <p>The required keyword takes an array of one or more strings. Each of these strings must be unique.</p>
+                    <p>In the following example schema defining a user record, we require that each user has a name and e-mail address, but we don’t mind if they don’t provide their address or telephone number:</p>
+                    <pre>
+                        <code>
+                            &#123;
+                                &#9;"type": "object",
+                                &#9;"properties": &#123;
+                                    &#9;&#9;"name":      &#123; "type": "string" &#125;,
+                                    &#9;&#9;"email":     &#123; "type": "string" &#125;,
+                                    &#9;&#9;"address":   &#123; "type": "string" &#125;,
+                                    &#9;&#9;"telephone": &#123; "type": "string" &#125;
+                                &#9;&#125;,
+                                &#9;"required": ["name", "email"]
+                            &#125;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+
+            <br>
+
+            <p>The following Schema Object is used for this example:</p>
+            <pre>
+                <code>
+                    &#123;
+                        "type": "object",
+                        "required": ["startDate", "endDate", "min", "max", "checked", "sources", "dateValue"],
+                        "properties": &#123;
+                            "checked": &#123;
+                                "$id": "data/properties/checked",
+                                "type": "boolean",
+                                "title": "The Checked Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": false,
+                                "examples": [
+                                    false
+                                ]
+                            &#125;,
+                            "date": &#123;
+                                "$id": "data/properties/date",
+                                "title": "Date",
+                                "type": "object",
+                                "format": "date",
+                                "dateValue": &#123;
+                                    "$id": "data/properties/date/dateValue",
+                                    "type": "string",
+                                    "title": "Date"
+                                &#125;
+                            &#125;,
+                            "duration": &#123;
+                                "$id": "data/properties/duration",
+                                "type": "object",
+                                "properties": &#123;
+                                    "min": &#123;
+                                        "$id": "data/properties/duration/properties/min",
+                                        "type": "integer",
+                                        "title": "The Min Schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": 0,
+                                        "examples": [
+                                            5
+                                        ]
+                                    &#125;,
+                                    "max": &#123;
+                                        "$id": "data/properties/duration/properties/max",
+                                        "type": "integer",
+                                        "title": "The Max Schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": 0,
+                                        "examples": [
+                                            10
+                                        ]
+                                    &#125;
+                                &#125;
+                            &#125;,
+                            "startDate": &#123;
+                                "$id": "data/properties/startDate",
+                                "type": "string",
+                                "title": "The Startdate Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "2007-08-31T16:47+00:00"
+                                ]
+                            &#125;,
+                            "endDate": &#123;
+                                "$id": "data/properties/endDate",
+                                "type": "string",
+                                "title": "The Enddate Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "2007-08-31T16:47+00:00"
+                                ]
+                            &#125;,
+                            "sources": &#123;
+                                "$id": "data/properties/sources",
+                                "type": "array",
+                                "items": &#123;
+                                    "$id": "/properties/sources/items",
+                                    "type": "string",
+                                    "title": "The 0 Schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": "",
+                                    "examples": [
+                                        "source1"
+                                    ]
+                                &#125;
+                            &#125;
+                        &#125;
+                    &#125;
+                </code>
+            </pre>
+
+            <br>
+
+            <p><strong>Form Object:</strong></p>
+            <p>The actual form object that respects the schema.</p>
+            <p>The inputs can have predefined values or be empty and filled in by the user or dynamicly within the code.</p>
+            <p>The following Form Object is used for this example:</p>
+            <pre>
+                <code>
+                    &#123;
+                        "checked": false,
+                        "date": &#123;
+                            "dateValue": moment_(new Date()).format('Do MMMM YYYY')
+                        &#125;,
+                        "duration": &#123;
+                            "min": 5,
+                            "max": 10
+                        &#125;,
+                        "startDate": "2007-08-31T16:47+00:00",
+                        "endDate": "2007-08-31T16:47+00:00",
+                        "sources": [
+                            "source1",
+                            "source2"
+                        ]
+                    &#125;
+                </code>
+            </pre>
+        </div>
+
+        <div class="col-lg-4 mb-4">
             <my-dynamic-form [schema]="schema" [form]="form" [ajv]="ajv">
                 <my-input for="integer"></my-input>
                 <my-input for="string"></my-input>
