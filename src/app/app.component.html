@@ -28,8 +28,9 @@
             <p><code>"type"</code> accepts values like: string, integer, boolean, array and object.</p>
             <p>Any type, except <code>&#123; "type": "object" &#125;</code> can have properties like:</p>
             <ul>
-                <li><code>"title"</code> &#61;&gt; Specifies extra information about an element.</li>
+                <li><code>"labelContent"</code> &#61;&gt; Labeling an input.</li>
                 <li><code>"description"</code> &#61;&gt; An explanation about the purpose of the instance.</li>
+                <li><code>"placeholder"</code> &#61;&gt; Input placeholder.</li>
                 <li><code>"default"</code></li>
                 <li><code>"examples"</code> &#61;&gt; "examples" is an array of strings where you can offer example of values that the input accepts.</li>
             </ul>
@@ -88,23 +89,13 @@
                             "checked": &#123;
                                 "$id": "data/properties/checked",
                                 "type": "boolean",
-                                "title": "The Checked Schema",
+                                "labelContent": "The Checked Schema",
                                 "description": "An explanation about the purpose of this instance.",
+                                "placeholder": "Check Me",
                                 "default": false,
                                 "examples": [
                                     false
                                 ]
-                            &#125;,
-                            "date": &#123;
-                                "$id": "data/properties/date",
-                                "title": "Date",
-                                "type": "object",
-                                "format": "date",
-                                "dateValue": &#123;
-                                    "$id": "data/properties/date/dateValue",
-                                    "type": "string",
-                                    "title": "Date"
-                                &#125;
                             &#125;,
                             "duration": &#123;
                                 "$id": "data/properties/duration",
@@ -113,8 +104,9 @@
                                     "min": &#123;
                                         "$id": "data/properties/duration/properties/min",
                                         "type": "integer",
-                                        "title": "The Min Schema",
+                                        "labelContent": "The Min Schema",
                                         "description": "An explanation about the purpose of this instance.",
+                                        "placeholder": "Min Value",
                                         "default": 0,
                                         "examples": [
                                             5
@@ -123,8 +115,9 @@
                                     "max": &#123;
                                         "$id": "data/properties/duration/properties/max",
                                         "type": "integer",
-                                        "title": "The Max Schema",
+                                        "labelContent": "The Max Schema",
                                         "description": "An explanation about the purpose of this instance.",
+                                        "placeholder": "Max Value",
                                         "default": 0,
                                         "examples": [
                                             10
@@ -132,11 +125,23 @@
                                     &#125;
                                 &#125;
                             &#125;,
+                            "date": &#123;
+                                "$id": "data/properties/date",
+                                "labelContent": "Date",
+                                "type": "object",
+                                "format": "date",
+                                "placeholder": "Select a Date",
+                                "dateValue": &#123;
+                                    "$id": "data/properties/date/dateValue",
+                                    "type": "string"
+                                &#125;
+                            &#125;,
                             "startDate": &#123;
                                 "$id": "data/properties/startDate",
                                 "type": "string",
-                                "title": "The Startdate Schema",
+                                "labelContent": "The Startdate Schema",
                                 "description": "An explanation about the purpose of this instance.",
+                                "placeholder": "Start Date",
                                 "default": "",
                                 "examples": [
                                     "2007-08-31T16:47+00:00"
@@ -145,8 +150,9 @@
                             "endDate": &#123;
                                 "$id": "data/properties/endDate",
                                 "type": "string",
-                                "title": "The Enddate Schema",
+                                "labelContent": "The Enddate Schema",
                                 "description": "An explanation about the purpose of this instance.",
+                                "placeholder": "End Date",
                                 "default": "",
                                 "examples": [
                                     "2007-08-31T16:47+00:00"
@@ -158,8 +164,9 @@
                                 "items": &#123;
                                     "$id": "/properties/sources/items",
                                     "type": "string",
-                                    "title": "The 0 Schema",
+                                    "labelContent": "Select",
                                     "description": "An explanation about the purpose of this instance.",
+                                    "placeholder": "Select",
                                     "default": "",
                                     "examples": [
                                         "source1"
@@ -179,14 +186,14 @@
             <p>The following Form Object is used for this example:</p>
             <pre>
                 <code>
-                    &#123;
+                    &#125;
                         "checked": false,
-                        "date": &#123;
-                            "dateValue": moment_(new Date()).format('Do MMMM YYYY')
-                        &#125;,
-                        "duration": &#123;
+                        "duration": &#125;
                             "min": 5,
                             "max": 10
+                        &#125;,
+                        "date": &#125;
+                            "dateValue": moment_(new Date()).format('Do MMMM YYYY')
                         &#125;,
                         "startDate": "2007-08-31T16:47+00:00",
                         "endDate": "2007-08-31T16:47+00:00",

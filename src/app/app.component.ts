@@ -17,23 +17,13 @@ export class AppComponent {
             "checked": {
                 "$id": "data/properties/checked",
                 "type": "boolean",
-                "title": "The Checked Schema",
+                "labelContent": "The Checked Schema",
                 "description": "An explanation about the purpose of this instance.",
+                "placeholder": "Check Me",
                 "default": false,
                 "examples": [
                     false
                 ]
-            },
-            "date": {
-                "$id": "data/properties/date",
-                "title": "Date",
-                "type": "object",
-                "format": "date",
-                "dateValue": {
-                    "$id": "data/properties/date/dateValue",
-                    "type": "string",
-                    "title": "Date"
-                }
             },
             "duration": {
                 "$id": "data/properties/duration",
@@ -42,8 +32,9 @@ export class AppComponent {
                     "min": {
                         "$id": "data/properties/duration/properties/min",
                         "type": "integer",
-                        "title": "The Min Schema",
+                        "labelContent": "The Min Schema",
                         "description": "An explanation about the purpose of this instance.",
+                        "placeholder": "Min Value",
                         "default": 0,
                         "examples": [
                             5
@@ -52,8 +43,9 @@ export class AppComponent {
                     "max": {
                         "$id": "data/properties/duration/properties/max",
                         "type": "integer",
-                        "title": "The Max Schema",
+                        "labelContent": "The Max Schema",
                         "description": "An explanation about the purpose of this instance.",
+                        "placeholder": "Max Value",
                         "default": 0,
                         "examples": [
                             10
@@ -61,11 +53,23 @@ export class AppComponent {
                     }
                 }
             },
+            "date": {
+                "$id": "data/properties/date",
+                "labelContent": "Date",
+                "type": "object",
+                "format": "date",
+                "placeholder": "Select a Date",
+                "dateValue": {
+                    "$id": "data/properties/date/dateValue",
+                    "type": "string"
+                }
+            },
             "startDate": {
                 "$id": "data/properties/startDate",
                 "type": "string",
-                "title": "The Startdate Schema",
+                "labelContent": "The Startdate Schema",
                 "description": "An explanation about the purpose of this instance.",
+                "placeholder": "Start Date",
                 "default": "",
                 "examples": [
                     "2007-08-31T16:47+00:00"
@@ -74,8 +78,9 @@ export class AppComponent {
             "endDate": {
                 "$id": "data/properties/endDate",
                 "type": "string",
-                "title": "The Enddate Schema",
+                "labelContent": "The Enddate Schema",
                 "description": "An explanation about the purpose of this instance.",
+                "placeholder": "End Date",
                 "default": "",
                 "examples": [
                     "2007-08-31T16:47+00:00"
@@ -87,8 +92,9 @@ export class AppComponent {
                 "items": {
                     "$id": "/properties/sources/items",
                     "type": "string",
-                    "title": "The 0 Schema",
+                    "labelContent": "Select",
                     "description": "An explanation about the purpose of this instance.",
+                    "placeholder": "Select",
                     "default": "",
                     "examples": [
                         "source1"
@@ -100,12 +106,12 @@ export class AppComponent {
 
     form: any = {
         "checked": false,
-        "date": {
-            "dateValue": moment_(new Date()).format('Do MMMM YYYY')
-        },
         "duration": {
             "min": 5,
             "max": 10
+        },
+        "date": {
+            "dateValue": moment_(new Date()).format('Do MMMM YYYY')
         },
         "startDate": "2007-08-31T16:47+00:00",
         "endDate": "2007-08-31T16:47+00:00",
