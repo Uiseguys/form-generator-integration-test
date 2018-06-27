@@ -5,6 +5,7 @@ import { Http, HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { routes } from './app.routing';
 import '@ui-guys/form-generator';
+// import '@ui-guys/stencil-bs-ui-lib';
 
 // Components
 import { ErrorComponent } from './error/error.component';
@@ -12,6 +13,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FormGeneratorComponent } from './formGenerator/formGenerator.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+
 
 @NgModule({
     imports: [
@@ -25,7 +28,8 @@ import { FormGeneratorComponent } from './formGenerator/formGenerator.component'
         AppComponent,
         HeaderComponent,
         HomeComponent,
-        FormGeneratorComponent
+        FormGeneratorComponent,
+        DatepickerComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
