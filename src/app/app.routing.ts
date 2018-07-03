@@ -1,7 +1,7 @@
-import { HomeComponent } from './home/home.component';
-import { FormGeneratorComponent } from './formGenerator/formGenerator.component';
-import { DatepickerComponent } from './datepicker/datepicker.component';
-import { ErrorComponent } from './error/error.component';
+import { HomeComponent } from './Home/home.component';
+import { FormGeneratorComponent } from './FormGenerator/formGenerator.component';
+import { DatepickerComponent } from './Datepicker/datepicker.component';
+import { ErrorComponent } from './Error/error.component';
 
 export const routes = [
     { path: '', component: HomeComponent },

@@ -4,16 +4,18 @@ import { Router, RouterModule } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { routes } from './app.routing';
-import '@ui-guys/form-generator';
-// import '@ui-guys/stencil-bs-ui-lib';
+
+//order matters!
+import '@ui-guys/stencil-bs-ui-lib';
+import '@ui-guys/form-generator/dist/jsonschema';
 
 // Components
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './Error/error.component';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { FormGeneratorComponent } from './formGenerator/formGenerator.component';
-import { DatepickerComponent } from './datepicker/datepicker.component';
+import { HeaderComponent } from './Header/header.component';
+import { HomeComponent } from './Home/home.component';
+import { FormGeneratorComponent } from './FormGenerator/formGenerator.component';
+import { DatepickerComponent } from './Datepicker/datepicker.component';
 
 
 @NgModule({

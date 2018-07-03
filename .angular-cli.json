@@ -10,12 +10,8 @@
             "assets": [
                 "assets",
                 "favicon.ico",
-                {
-                    "glob": "**/*",
-                    "input": "../node_modules/@ui-guys/form-generator/dist",
-                    "output": "./",
-                    "allowOutsideOutDir": false
-                }
+                {"glob": "**/*", "input": "../node_modules/@ui-guys/form-generator/dist", "output": "./"},
+                {"glob": "**/*", "input": "../node_modules/@ui-guys/stencil-bs-ui-lib/dist", "output": "./"}
             ],
             "index": "index.html",
             "main": "main.ts",

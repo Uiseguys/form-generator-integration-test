@@ -3,7 +3,8 @@ import * as Ajv from 'ajv/dist/ajv.min.js';
 import * as moment_ from 'moment';
 
 @Component({
-    templateUrl: './formGenerator.component.html'
+    templateUrl: './formGenerator.component.html',
+    styleUrls: ["./formGenerator.component.scss"]
 })
 export class FormGeneratorComponent {
     ajv: any;
