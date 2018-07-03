@@ -5,7 +5,7 @@ import { Http, HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { routes } from './app.routing';
 
-//order matters!
+//order matters! Because 'stencil-bs-ui-lib' has namespace 'index'
 import '@ui-guys/stencil-bs-ui-lib';
 import '@ui-guys/form-generator/dist/jsonschema';
 
