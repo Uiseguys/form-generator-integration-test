@@ -16,7 +16,7 @@
                     <h1>Form Generator</h1>
                 </div>
 
-                <div class="col-lg-10 mb-4 d-block form-generator-container">
+                <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
                     <form-generator [schema]="this.schema" [form]="this.form" [ajv]="this.ajv">
                         <input-generator for="integer"></input-generator>
                         <input-generator for="string"></input-generator>
@@ -26,7 +26,7 @@
                     </form-generator>
                 </div>
 
-                <div class="col-lg-12 mb-4 border-top info-container">
+                <div class="col-lg-12 mb-4 border-top info-container" style="overflow-y: scroll; height:100vh; background-color: #eee;">
                     <h1>READ ME</h1>
                     <p>The HTML structure of the Json Schema Form is the following:</p>
                     <pre>

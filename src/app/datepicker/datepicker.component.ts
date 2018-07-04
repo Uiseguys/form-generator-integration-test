@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './datepicker.component.html',
-    styleUrls: ["./datepicker.component.scss"]
+    templateUrl: './datepicker.component.html'
 })
 export class DatepickerComponent {
     constructor() {}
