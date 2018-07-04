@@ -31,17 +31,17 @@
                     <p>The HTML structure of the Json Schema Form is the following:</p>
                     <pre>
                         <code>
-                            	&lt;my-dynamic-form [schema]="schema" [form]="form" [ajv]="ajv"&gt;
-                                	&#9;&lt;my-input for="integer"&gt;&lt;/my-input&gt;
-                                	&#9;&lt;my-input for="string"&gt;&lt;/my-input&gt;
-                                	&#9;&lt;my-input for="object"&gt;&lt;/my-input&gt;
-                                	&#9;&lt;my-dropdown for="array"&gt;&lt;/my-dropdown&gt;
-                                	&#9;&lt;my-checkbox for="boolean"&gt;&lt;/my-checkbox&gt;
-                            	&lt;/my-dynamic-form&gt;
+                            	&lt;form-generator [schema]="schema" [form]="form" [ajv]="ajv"&gt;
+                                	&#9;&lt;input-generator for="integer"&gt;&lt;/input-generator&gt;
+                                	&#9;&lt;input-generator for="string"&gt;&lt;/input-generator&gt;
+                                	&#9;&lt;input-generator for="object"&gt;&lt;/input-generator&gt;
+                                	&#9;&lt;dropdown-generator for="array"&gt;&lt;/dropdown-generator&gt;
+                                	&#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;
+                            	&lt;/form-generator&gt;
                         </code>
                     </pre>
 
-                    <p>The root <code>&lt;my-dynamic-form /&gt;</code> accepts 3 props:</p>
+                    <p>The root <code>&lt;form-generator /&gt;</code> accepts 3 props:</p>
                     <ul>
                         <li>[schema]: Form definition object.</li>
                         <li>[form]: Form object.</li>
