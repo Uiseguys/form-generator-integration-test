@@ -18,8 +18,8 @@
 
                 <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
                     <form-generator [schema]="this.schema" [form]="this.form" [ajv]="this.ajv">
-                        <input-generator for="integer"></input-generator>
-                        <input-generator for="string"></input-generator>
+                        <cwc-inlineedit for="string"></cwc-inlineedit>
+                        <cwc-inlineedit for="integer"></cwc-inlineedit>
                         <input-generator for="object"></input-generator>
                         <dropdown-generator for="array"></dropdown-generator>
                         <checkbox-generator for="boolean"></checkbox-generator>
