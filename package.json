@@ -33,7 +33,7 @@
         "@types/jasmine": "^2.8.8",
         "@types/jasminewd2": "~2.0.2",
         "@types/node": "^6.0.114",
-        "@ui-guys/form-generator": "0.1.5",
+        "@ui-guys/form-generator": "0.1.6",
         "@ui-guys/stencil-bs-ui-lib": "^0.6.0",
         "ajv": "^6.5.2",
         "codelyzer": "^4.4.2",
