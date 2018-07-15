@@ -10,7 +10,6 @@
             "assets": [
                 "assets",
                 "favicon.ico",
-                "_redirects",
                 {"glob": "**/*", "input": "../node_modules/@ui-guys/form-generator/dist", "output": "./"},
                 {"glob": "**/*", "input": "../node_modules/@ui-guys/stencil-bs-ui-lib/dist", "output": "./"}
             ],
