@@ -4,7 +4,7 @@ import { Http, HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import '@ui-guys/stencil-bs-ui-lib/dist/ui-lib';
-import '@ui-guys/form-generator/dist/formGenerator';
+import '@ui-guys/form-generator/dist/form-generator';
 
 // Components
 import { AppComponent } from './app.component';
