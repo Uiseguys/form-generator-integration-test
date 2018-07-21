@@ -11,7 +11,7 @@ export class AppComponent {
     constructor() {
         this.schema = {
             "type": "object",
-            "required": ["checked", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "sources"],
+            "required": ["checked", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "dropdown", "autocomplete"],
             "properties": {
                 "checked": {
                     "$id": "data/properties/checked",
@@ -97,18 +97,51 @@ export class AppComponent {
                         "2007-08-31T16:47+00:00"
                     ]
                 },
-                "sources": {
-                    "$id": "data/properties/sources",
+                "dropdown": {
+                    "$id": "data/properties/dropdown",
                     "type": "array",
+                    "arrayType": "dropdown",
                     "items": {
-                        "$id": "/properties/sources/items",
+                        "$id": "/properties/dropdown/items",
                         "type": "string",
-                        "labelContent": "Select",
-                        "description": "An explanation about the purpose of this instance.",
-                        "placeholder": "Select",
-                        "default": "",
-                        "examples": [
-                            "source1"
+                        "labelContent": "Dropdown",
+                        "buttonText": "Select",
+                        "placeholder": "Select a value",
+                        "data": ["Automatic", "Manual"]
+                    }
+                },
+                "autocomplete": {
+                    "$id": "data/properties/autocomplete",
+                    "type": "array",
+                    "arrayType": "autocomplete",
+                    "items": {
+                        "$id": "/properties/autocomplete/items",
+                        "type": "object",
+                        "labelContent": "Autocomplete",
+                        "placeholder": "Search something e.g. 'Argentina'",
+                        "searchKey": "data.name",
+                        "data": [
+                            {
+                                "type": 'country',
+                                "data": {
+                                    "name": 'Austria',
+                                    "capital": 'Vienna'
+                                }
+                            },
+                            {
+                                "type": 'country',
+                                "data": {
+                                    "name": 'Australia',
+                                    "capital": 'Canberra'
+                                }
+                            },
+                            {
+                                "type": 'country',
+                                "data": {
+                                    "name": 'Argentina',
+                                    "capital": 'Buenos Aires'
+                                }
+                            }
                         ]
                     }
                 }
@@ -129,10 +162,8 @@ export class AppComponent {
             },
             "startDateString": "2007-08-31T16:47+00:00",
             "endDateString": "2007-08-31T16:47+00:00",
-            "sources": [
-                "source1",
-                "source2"
-            ]
+            "dropdown": [],
+            "autocomplete": []
         };
     }
 }
