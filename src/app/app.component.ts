@@ -22,7 +22,7 @@ export class AppComponent {
                 "type": "object",
                 "placeholder": "Search something e.g. 'Argentina'",
                 "searchKey": "data.name",
-                "data": [
+                "enum": [
                   {
                     "type": 'country',
                     "data": {
@@ -50,12 +50,6 @@ export class AppComponent {
             "checkbox": {
               "$id": "data/properties/checkbox",
               "type": "boolean",
-              "description": "An explanation about the purpose of this instance.",
-              "placeholder": "Check Me",
-              "default": false,
-              "examples": [
-                false
-              ]
             },
             "duration": {
               "$id": "data/properties/duration",
@@ -64,22 +58,12 @@ export class AppComponent {
                 "min": {
                   "$id": "data/properties/duration/properties/min",
                   "type": "integer",
-                  "description": "An explanation about the purpose of this instance.",
-                  "placeholder": "Min Value",
-                  "default": 0,
-                  "examples": [
-                    5
-                  ]
+                  "placeholder": "Min Value"
                 },
                 "max": {
                   "$id": "data/properties/duration/properties/max",
                   "type": "integer",
-                  "description": "An explanation about the purpose of this instance.",
                   "placeholder": "Max Value",
-                  "default": 0,
-                  "examples": [
-                    10
-                  ]
                 }
               }
             },
@@ -108,22 +92,12 @@ export class AppComponent {
             "startDateString": {
               "$id": "data/properties/startDateString",
               "type": "string",
-              "description": "An explanation about the purpose of this instance.",
-              "placeholder": "Start Date",
-              "default": "",
-              "examples": [
-                "2007-08-31T16:47+00:00"
-              ]
+              "placeholder": "Start Date"
             },
             "endDateString": {
               "$id": "data/properties/endDateString",
               "type": "string",
-              "description": "An explanation about the purpose of this instance.",
-              "placeholder": "End Date",
-              "default": "",
-              "examples": [
-                "2007-08-31T16:47+00:00"
-              ]
+              "placeholder": "End Date"
             },
             "dropdown": {
               "$id": "data/properties/dropdown",

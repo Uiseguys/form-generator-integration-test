@@ -27,75 +27,70 @@
                     <p>The HTML structure of the Json Schema Form is the following:</p>
                     <pre>
                         <code>
-                            	&lt;form-generator [schema]="schema" [form]="form" [ajv]="ajv"&gt;
-                                	&#9;&lt;input-generator for="integer"&gt;&lt;/input-generator&gt;
-                                	&#9;&lt;input-generator for="string"&gt;&lt;/input-generator&gt;
-                                	&#9;&lt;input-generator for="object"&gt;&lt;/input-generator&gt;
-                                	&#9;&lt;dropdown-generator for="array"&gt;&lt;/dropdown-generator&gt;
-                                	&#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;
-                            	&lt;/form-generator&gt;
+                            &lt;form-generator [schema]="schema" [value]="form"&gt;
+                                &#9;&lt;cwc-inlineedit for="string"&gt;&lt;/cwc-inlineedit&gt;
+                                &#9;&lt;cwc-inlineedit for="integer"&gt;&lt;/cwc-inlineedit&gt;
+                                &#9;&lt;cwc-datepicker for="date"&gt;&lt;/cwc-datepicker&gt;
+                                &#9;&lt;cwc-combobox for="dropdown"&gt;&lt;/cwc-combobox&gt;
+                                &#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;
+                                &#9;&lt;cwc-autocomplete-select for="autocomplete"&gt;&lt;/cwc-autocomplete-select&gt;
+                            &lt;/form-generator&gt;
                         </code>
                     </pre>
 
-                    <p>The root <code>&lt;form-generator /&gt;</code> accepts 3 props:</p>
+                    <p>The root <code>&lt;form-generator /&gt;</code> accepts 2 props:</p>
                     <ul>
                         <li>[schema]: Form definition object.</li>
-                        <li>[form]: Form object.</li>
-                        <li>[ajv]: JSON Schema Validator. https://github.com/epoberezkin/ajv</li>
+                        <li>[value]: Initial Form object values.</li>
                     </ul>
 
                     <p><strong>Schema Object:</strong></p>
                     <p>The most important and mandatory properties of the object are the <code>"type"</code> and <code>"$id"</code> property.</p>
                     <p><code>"$id"</code> must be unique for every property.</p>
                     <p><code>"type"</code> accepts values like: string, integer, boolean, array and object.</p>
-                    <p>Any type, except <code>&#123; "type": "object" &#125;</code> can have properties like:</p>
-                    <ul>
-                        <li><code>"labelContent"</code> &#61;&gt; Labeling an input.</li>
-                        <li><code>"description"</code> &#61;&gt; An explanation about the purpose of the instance.</li>
-                        <li><code>"placeholder"</code> &#61;&gt; Input placeholder.</li>
-                        <li><code>"default"</code></li>
-                        <li><code>"examples"</code> &#61;&gt; "examples" is an array of strings where you can offer example of values that the input accepts.</li>
-                    </ul>
 
                     <br>
 
                     <p><i>Types:</i></p>
                     <ul>
-                        <li><code>&#123; "type": "string" &#125;</code> &#61;&gt; The string type is used for strings of text. It may contain Unicode characters.</li>
-                        <li><code>&#123; "type": "integer" &#125;</code> &#61;&gt; Used for any integers type numbers.</li>
-                        <li><code>&#123; "type": "boolean" &#125;</code> &#61;&gt; true or false values. Used for checkbox type inputs.</li>
-                        <li><code>&#123; "type": "array" &#125;</code> &#61;&gt; Accepts only "$id" and "items" properties. "items" is an object of "type" string or integer. Used for checkbox type inputs. Used for dropdown type inputs.</li>
-                        <li><code>&#123; "type": "object" &#125;</code> &#61;&gt; Requires a mandatory property, "properties". The properties (key-value pairs) on an object are defined using the properties keyword. The value of properties is an object, where each key is the name of a property and each value is a JSON schema used to validate that property.
-                            <p>For example, let’s say we want to define a simple schema for an address made up of a number, street name and street type:</p>
-                            <pre>
-                                <code>
-                                    &#123;
-                                        &#9;"type": "object",
-                                        &#9;"properties": &#123;
-                                            &#9;&#9;"number":      &#123; "type": "number" &#125;,
-                                            &#9;&#9;"street_name": &#123; "type": "string" &#125;,
-                                            &#9;&#9;"street_type": &#123; "type": "string" &#125;
-                                        &#9;&#125;
-                                    &#125;
-                                </code>
-                            </pre>
-                            <p>By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword.</p>
-                            <p>The required keyword takes an array of one or more strings. Each of these strings must be unique.</p>
-                            <p>In the following example schema defining a user record, we require that each user has a name and e-mail address, but we don’t mind if they don’t provide their address or telephone number:</p>
-                            <pre>
-                                <code>
-                                    &#123;
-                                        &#9;"type": "object",
-                                        &#9;"properties": &#123;
-                                            &#9;&#9;"name":      &#123; "type": "string" &#125;,
-                                            &#9;&#9;"email":     &#123; "type": "string" &#125;,
-                                            &#9;&#9;"address":   &#123; "type": "string" &#125;,
-                                            &#9;&#9;"telephone": &#123; "type": "string" &#125;
-                                        &#9;&#125;,
-                                        &#9;"required": ["name", "email"]
-                                    &#125;
-                                </code>
-                            </pre>
+                        <li>
+                            <code>&#123; "type": "string" &#125;</code> and <code>&#123; "type": "integer" &#125;</code> &#61;&gt;<br />
+                            Will generate, using the element <code>&lt;cwc-inlineedit for="string/integer"&gt;</code>,
+                            an input of type string, respectively of type number.<br />
+                            Both can have a property called <strong>"placeholder"</strong> for the input.
+                        </li>
+                        <li>
+                            <code>&#123; "type": "boolean" &#125;</code> &#61;&gt;<br />
+                            Will generate, using the element <code>&lt;checkbox-generator for="boolean"&gt;</code>, an input of type checkbox.
+                        </li>
+                        <li>
+                            <code>&#123; "type": "object" &#125;</code> &#61;&gt;<br />
+                            Is a container type property which can hold, using the <strong>"properties"</strong> property, other <strong>"type"</strong> objects.
+                        </li>
+                        <li>
+                            <code>&#123; "type": "object" &#125;</code> with <strong>"format": "date"</strong> property &#61;&gt;<br />
+                            Is a special type of <code>&#123; "type": "object" &#125;</code> which has no <strong>"properties"</strong> property.<br />
+                            Will generate, using the element <code>&lt;cwc-datepicker for="date"&gt;</code>, a custom input built to hold a date-range string.<br />
+                            It has the following mandatory properties:
+                            <strong>"startDate"</strong>, <strong>"endDate"</strong>, <strong>"lang"</strong>, <strong>"dateFormat"</strong>
+                            used to pass data to the <code>&lt;cwc-datepicker for="date"&gt;</code> element.
+                            Each of them must have <strong>"$id"</strong> and <strong>"type" (string/integer)</strong> properties used for validation.<br />
+                            It can have a property called <strong>"placeholder"</strong> for the input.
+                        </li>
+                        <li>
+                            <code>&#123; "type": "array" &#125;</code> with <strong>"arrayType": "dropdown"</strong> property &#61;&gt;<br />
+                            Will generate, using the element <code>&lt;cwc-combobox for="dropdown"&gt;</code>, a dropdown button and a readonly input.<br />
+                            It has a mandatory property <strong>"items"</strong> where the values of the dropdown are passed using the <strong>"enum"</strong> property.<br />
+                            In the "items" property, the <strong>"type"</strong> property is used to define the type of the enum values ("string", "integer" etc).
+                            The property <strong>"buttonText"</strong> will name the dropdown button and it can have a property called <strong>"placeholder"</strong> for the input.
+                        </li>
+                        <li>
+                            <code>&#123; "type": "array" &#125;</code> with <strong>"arrayType": "autocomplete"</strong> property &#61;&gt;<br />
+                            Will generate, using the element <code>&lt;cwc-autocomplete-select for="autocomplete"&gt;</code>, a custom input.<br />
+                            When the user starts typing, a dropdown window will pop up letting the user choose how many values he wants from the returned values.<br />
+                            It has the same <strong>"items"</strong> property as the "arrayType": "dropdown" except it has one more property called <strong>"searchKey"</strong>,
+                            only if the values of the <strong>"enum"</strong> property are objects,
+                            used to tell the component on which key to search for in the object given in the <strong>"enum"</strong> property.
                         </li>
                     </ul>
 
@@ -106,18 +101,45 @@
                         <code>
                             &#123;
                                 "type": "object",
-                                "required": ["startDate", "endDate", "min", "max", "checked", "sources", "dateValue"],
+                                "required": ["checkbox", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "dropdown", "autocomplete"],
                                 "properties": &#123;
+                                    "autocomplete": &#123;
+                                        "$id": "data/properties/autocomplete",
+                                        "type": "array",
+                                        "arrayType": "autocomplete",
+                                        "items": &#123;
+                                            "$id": "/properties/sources/items",
+                                            "type": "object",
+                                            "placeholder": "Search something e.g. 'Argentina'",
+                                            "searchKey": "data.name",
+                                            "enum": [
+                                                &#123;
+                                                    "type": 'country',
+                                                    "data": &#123;
+                                                        "name": 'Austria',
+                                                        "capital": 'Vienna'
+                                                    &#125;
+                                                &#125;,
+                                                &#123;
+                                                    "type": 'country',
+                                                    "data": &#123;
+                                                        "name": 'Australia',
+                                                        "capital": 'Canberra'
+                                                    &#125;
+                                                &#125;,
+                                                &#123;
+                                                    "type": 'country',
+                                                    "data": &#123;
+                                                        "name": 'Argentina',
+                                                        "capital": 'Buenos Aires'
+                                                    &#125;
+                                                &#125;
+                                            ]
+                                        &#125;
+                                    &#125;
                                     "checked": &#123;
-                                        "$id": "data/properties/checked",
-                                        "type": "boolean",
-                                        "labelContent": "The Checked Schema",
-                                        "description": "An explanation about the purpose of this instance.",
-                                        "placeholder": "Check Me",
-                                        "default": false,
-                                        "examples": [
-                                            false
-                                        ]
+                                        "$id": "data/properties/checkbox",
+                                        "type": "boolean"
                                     &#125;,
                                     "duration": &#123;
                                         "$id": "data/properties/duration",
@@ -126,73 +148,57 @@
                                             "min": &#123;
                                                 "$id": "data/properties/duration/properties/min",
                                                 "type": "integer",
-                                                "labelContent": "The Min Schema",
-                                                "description": "An explanation about the purpose of this instance.",
-                                                "placeholder": "Min Value",
-                                                "default": 0,
-                                                "examples": [
-                                                    5
-                                                ]
+                                                "placeholder": "Min Value"
                                             &#125;,
                                             "max": &#123;
                                                 "$id": "data/properties/duration/properties/max",
                                                 "type": "integer",
-                                                "labelContent": "The Max Schema",
-                                                "description": "An explanation about the purpose of this instance.",
-                                                "placeholder": "Max Value",
-                                                "default": 0,
-                                                "examples": [
-                                                    10
-                                                ]
+                                                "placeholder": "Max Value"
                                             &#125;
                                         &#125;
                                     &#125;,
                                     "date": &#123;
                                         "$id": "data/properties/date",
-                                        "labelContent": "Date",
                                         "type": "object",
                                         "format": "date",
                                         "placeholder": "Select a Date",
-                                        "dateValue": &#123;
-                                            "$id": "data/properties/date/dateValue",
+                                        "startDate": &#123;
+                                            "$id": "data/properties/date/startDate",
+                                            "type": "string"
+                                        &#125;,
+                                        "endDate": &#123;
+                                            "$id": "data/properties/date/endDate",
+                                            "type": "string"
+                                        &#125;,
+                                        "lang": &#123;
+                                            "$id": "data/properties/date/lang",
+                                            "type": "string"
+                                        &#125;,
+                                        "dateFormat": &#123;
+                                            "$id": "data/properties/date/dateFormat",
                                             "type": "string"
                                         &#125;
                                     &#125;,
-                                    "startDate": &#123;
+                                    "startDateString": &#123;
                                         "$id": "data/properties/startDate",
                                         "type": "string",
-                                        "labelContent": "The Startdate Schema",
-                                        "description": "An explanation about the purpose of this instance.",
-                                        "placeholder": "Start Date",
-                                        "default": "",
-                                        "examples": [
-                                            "2007-08-31T16:47+00:00"
-                                        ]
+                                        "placeholder": "Start Date"
                                     &#125;,
-                                    "endDate": &#123;
+                                    "endDateString": &#123;
                                         "$id": "data/properties/endDate",
                                         "type": "string",
-                                        "labelContent": "The Enddate Schema",
-                                        "description": "An explanation about the purpose of this instance.",
-                                        "placeholder": "End Date",
-                                        "default": "",
-                                        "examples": [
-                                            "2007-08-31T16:47+00:00"
-                                        ]
+                                        "placeholder": "End Date"
                                     &#125;,
-                                    "sources": &#123;
-                                        "$id": "data/properties/sources",
+                                    "dropdown": &#123;
+                                        "$id": "data/properties/dropdown",
                                         "type": "array",
+                                        "arrayType": "dropdown",
                                         "items": &#123;
                                             "$id": "/properties/sources/items",
                                             "type": "string",
-                                            "labelContent": "Select",
-                                            "description": "An explanation about the purpose of this instance.",
+                                            "buttonText": "Select",
                                             "placeholder": "Select",
-                                            "default": "",
-                                            "examples": [
-                                                "source1"
-                                            ]
+                                            "enum": ["Automatic", "Manual"]
                                         &#125;
                                     &#125;
                                 &#125;
@@ -209,20 +215,21 @@
                     <pre>
                         <code>
                             &#125;
+                            "autocomplete": [],
                                 "checked": false,
                                 "duration": &#125;
                                     "min": 5,
                                     "max": 10
                                 &#125;,
                                 "date": &#125;
-                                    "dateValue": moment_(new Date()).format('Do MMMM YYYY')
+                                    "startDate": "03/25/2018",
+                                    "endDate": "04/12/2018",
+                                    "lang": "en",
+                                    "dateFormat": "MM.DD.YYYY"
                                 &#125;,
-                                "startDate": "2007-08-31T16:47+00:00",
-                                "endDate": "2007-08-31T16:47+00:00",
-                                "sources": [
-                                    "source1",
-                                    "source2"
-                                ]
+                                "startDateString": "2007-08-31T16:47+00:00",
+                                "endDateString": "2007-08-31T16:47+00:00",
+                                "dropdown": []
                             &#125;
                         </code>
                     </pre>
