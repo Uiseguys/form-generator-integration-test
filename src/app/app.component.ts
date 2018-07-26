@@ -106,8 +106,10 @@ export class AppComponent {
               "items": {
                 "$id": "/properties/dropdown/items",
                 "type": "string",
-                "buttonText": "Select",
+                "buttonText": "",
+                "buttonLeftPosition": false,
                 "placeholder": "Select a value",
+                "readonly": true,
                 "enum": ["Automatic", "Manual"]
               }
             }
