@@ -16,9 +16,10 @@
                         <cwc-inlineedit for="string"></cwc-inlineedit>
                         <cwc-inlineedit for="integer"></cwc-inlineedit>
                         <cwc-datepicker for="date"></cwc-datepicker>
+                        <cwc-autocomplete-select for="autocomplete"></cwc-autocomplete-select>
                         <cwc-combobox for="dropdown"></cwc-combobox>
                         <checkbox-generator for="boolean"></checkbox-generator>
-                        <cwc-autocomplete-select for="autocomplete"></cwc-autocomplete-select>
+                        <cwc-wysiwyg-editor for="textarea"></cwc-wysiwyg-editor>
                     </form-generator>
                 </div>
 
@@ -31,9 +32,10 @@
                                 &#9;&lt;cwc-inlineedit for="string"&gt;&lt;/cwc-inlineedit&gt;
                                 &#9;&lt;cwc-inlineedit for="integer"&gt;&lt;/cwc-inlineedit&gt;
                                 &#9;&lt;cwc-datepicker for="date"&gt;&lt;/cwc-datepicker&gt;
+                                &#9;&lt;cwc-autocomplete-select for="autocomplete"&gt;&lt;/cwc-autocomplete-select&gt;
                                 &#9;&lt;cwc-combobox for="dropdown"&gt;&lt;/cwc-combobox&gt;
                                 &#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;
-                                &#9;&lt;cwc-autocomplete-select for="autocomplete"&gt;&lt;/cwc-autocomplete-select&gt;
+                                &#9;&lt;cwc-wysiwyg-editor for="textarea"&gt;&lt;/cwc-wysiwyg-editor&gt;
                             &lt;/form-generator&gt;
                         </code>
                     </pre>
@@ -58,6 +60,15 @@
                             Will generate, using the element <code>&lt;cwc-inlineedit for="string/integer"&gt;</code>,
                             an input of type string, respectively of type number.<br />
                             Both can have a property called <strong>"placeholder"</strong> for the input.
+                        </li>
+                        <li>
+                            <code>&#123; "type": "string" &#125;</code> with <strong>"stringType": "textarea"</strong> property &#61;&gt;<br />
+                            Will generate, using the element <code>&lt;cwc-wysiwyg-editor for="textarea"&gt;</code>, a wysiwyg editor.<br />
+                            It has the following optional boolean properties:<br />
+                            <strong>"fencing"</strong>: Prefers to wrap code blocks in "fences" (GitHub style) instead of indenting code blocks using four spaces. Defaults to true.<br />
+                            <strong>"html"</strong>: Enables HTML user input mode. Defaults to true.<br />
+                            <strong>"markdown"</strong>: Enables Markdown user input mode. Defaults to true.<br />
+                            <strong>"wysiwyg"</strong>: Enables WYSIWYG user input mode. Defaults to true.<br />
                         </li>
                         <li>
                             <code>&#123; "type": "boolean" &#125;</code> &#61;&gt;<br />
@@ -101,7 +112,7 @@
                         <code>
                             &#123;
                                 "type": "object",
-                                "required": ["checkbox", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "dropdown", "autocomplete"],
+                                "required": ["checkbox", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "dropdown", "autocomplete", wysiwygEditor],
                                 "properties": &#123;
                                     "autocomplete": &#123;
                                         "$id": "data/properties/autocomplete",
@@ -200,6 +211,15 @@
                                             "placeholder": "Select",
                                             "enum": ["Automatic", "Manual"]
                                         &#125;
+                                    &#125;,
+                                    "wysiwygEditor": &#123;
+                                        "$id": "data/properties/wysiwygEditor",
+                                        "type": "string",
+                                        "stringType": "textarea",
+                                        "fencing": true,
+                                        "html": true,
+                                        "markdown": true,
+                                        "wysiwyg": true
                                     &#125;
                                 &#125;
                             &#125;
@@ -229,7 +249,8 @@
                                 &#125;,
                                 "startDateString": "2007-08-31T16:47+00:00",
                                 "endDateString": "2007-08-31T16:47+00:00",
-                                "dropdown": []
+                                "dropdown": [],
+                                "wysiwygEditor": "&lt;strong&gt;Initial Text&lt;/strong&gt;"
                             &#125;
                         </code>
                     </pre>
