@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
-                    <form-generator [schema]="schema" [value]="form">
+                    <form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)">
                         <cwc-inlineedit for="string"></cwc-inlineedit>
                         <cwc-inlineedit for="integer"></cwc-inlineedit>
                         <cwc-datepicker for="date"></cwc-datepicker>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
-                    <form-generator [schema]="secondSchema" [value]="secondForm">
+                    <form-generator [schema]="secondSchema" [value]="secondForm" (onSubmit)="onFormSubmit($event)">
                       <cwc-combobox for="dropdown"></cwc-combobox>
                     </form-generator>
                 </div>

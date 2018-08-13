@@ -343,4 +343,8 @@ export class AppComponent {
           "dropdown4": []
         };
     }
+
+    onFormSubmit(event) {
+      console.log(event.detail);
+    }
 }
