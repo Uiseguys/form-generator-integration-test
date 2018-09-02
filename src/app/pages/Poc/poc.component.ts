@@ -67,19 +67,20 @@ export class PocComponent {
       "properties": {
         "fruits": {
           "type": "array",
+          "arrayType": "autocomplete",
           "items": {
             "type": "string"
           }
         },
         "vegetables": {
           "type": "array",
+          "arrayType": "autocomplete",
           "items": { "$ref": "#/definitions/veggie" }
         }
       },
       "definitions": {
         "veggie": {
           "type": "object",
-          "required": [ "veggieName", "veggieLike" ],
           "properties": {
             "veggieName": {
               "type": "string",
@@ -89,7 +90,10 @@ export class PocComponent {
               "type": "boolean",
               "description": "Do I like this vegetable?"
             }
-          }
+          },
+          "searchKey": "veggieName",
+          "required": [ "veggieName", "veggieLike" ],
+          "placeholder": "Search something e.g. 'Argentina'"
         }
       }
     };
