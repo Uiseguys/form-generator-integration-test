@@ -48,12 +48,12 @@ export class PocComponent {
       "type": "object",
       "properties": {
         "latitude": {
-          "type": "integer",
+          "type": "number",
           "minimum": -90,
           "maximum": 90
         },
         "longitude": {
-          "type": "integer",
+          "type": "number",
           "minimum": -180,
           "maximum": 180
         }

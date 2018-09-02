@@ -14,6 +14,7 @@
     <form-generator *ngIf="(viewSchema | json) != '{}'" [schema]="viewSchema" [value]="viewData" (onSubmit)="onFormSubmit($event)">
         <cwc-inlineedit for="string"></cwc-inlineedit>
         <cwc-inlineedit for="integer"></cwc-inlineedit>
+        <cwc-inlineedit for="number"></cwc-inlineedit>
         <cwc-datepicker for="date"></cwc-datepicker>
         <cwc-autocomplete-select for="autocomplete"></cwc-autocomplete-select>
         <cwc-combobox for="dropdown"></cwc-combobox>
