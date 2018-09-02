@@ -66,6 +66,7 @@ export class PocComponent {
       "type": "object",
       "properties": {
         "fruits": {
+          "$id": "data/properties/fruits",
           "type": "array",
           "arrayType": "autocomplete",
           "items": {
@@ -73,6 +74,7 @@ export class PocComponent {
           }
         },
         "vegetables": {
+          "$id": "data/properties/vegetables",
           "type": "array",
           "arrayType": "autocomplete",
           "items": { "$ref": "#/definitions/veggie" }
