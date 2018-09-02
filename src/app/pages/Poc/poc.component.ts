@@ -25,16 +25,19 @@ export class PocComponent {
       "type": "object",
       "properties": {
         "firstName": {
+          "$id": "data/properties/firstName",
           "type": "string",
           "description": "The person's first name."
         },
         "lastName": {
+          "$id": "data/properties/lastName",
           "type": "string",
           "description": "The person's last name."
         },
         "age": {
-          "description": "Age in years which must be equal to or greater than zero.",
+          "$id": "data/properties/age",
           "type": "integer",
+          "description": "Age in years which must be equal to or greater than zero.",
           "minimum": 0
         }
       }
@@ -48,11 +51,13 @@ export class PocComponent {
       "type": "object",
       "properties": {
         "latitude": {
+          "$id": "data/properties/latitude",
           "type": "number",
           "minimum": -90,
           "maximum": 90
         },
         "longitude": {
+          "$id": "data/properties/longitude",
           "type": "number",
           "minimum": -180,
           "maximum": 180
