@@ -5,12 +5,19 @@ import { Component } from '@angular/core';
     styleUrls: [ 'poc.component.scss' ]
 })
 export class PocComponent {
+  showFormData: any = {};
   selectInputData: string[];
-  viewSchema: any = {};
-  viewData: any = {};
+  viewPersonSchema: any = {};
+  viewPersonData: any = {};
+  viewGeographicalCoordinatesSchema: any = {};
+  viewGeographicalCoordinatesData: any = {};
+  viewVeggiesSchema: any = {};
+  viewVeggiesData: any = {};
+
   personSchema: any;
   geographicalCoordinatesSchema: any;
   veggiesSchema: any;
+
   personData: any;
   geographicalCoordinatesData: any;
   veggiesData: any;
@@ -87,6 +94,7 @@ export class PocComponent {
       },
       "definitions": {
         "veggie": {
+          "$id": "data/properties/vegetables#/definitions/veggie",
           "type": "object",
           "properties": {
             "veggieName": {
@@ -129,19 +137,22 @@ export class PocComponent {
     };
   }
 
-  onSelect(e) {
+  onSelect = (e) => {
     switch (e.detail.value) {
       case 'Person':
-        this.viewSchema = this.personSchema;
-        this.viewData = this.personData;
+        this.clearData();
+        this.viewPersonSchema = Object.assign({}, this.personSchema);
+        this.viewPersonData = Object.assign({}, this.personData);
         break;
       case 'Geographical Data':
-        this.viewSchema = this.geographicalCoordinatesSchema;
-        this.viewData = this.geographicalCoordinatesData;
+        this.clearData();
+        this.viewGeographicalCoordinatesSchema = Object.assign({}, this.geographicalCoordinatesSchema);
+        this.viewGeographicalCoordinatesData = Object.assign({}, this.geographicalCoordinatesData);
         break;
       case 'Veggies':
-        this.viewSchema = this.veggiesSchema;
-        this.viewData = this.veggiesData;
+        this.clearData();
+        this.viewVeggiesSchema = Object.assign({}, this.veggiesSchema);
+        this.viewVeggiesData = Object.assign({}, this.veggiesData);
         break;
       default:
         break;
@@ -149,6 +160,15 @@ export class PocComponent {
   }
 
   onFormSubmit(event) {
-    console.log(event.detail);
+    this.showFormData = event.detail;
+  }
+
+  clearData () {
+    this.viewPersonSchema = {};
+    this.viewPersonData = {};
+    this.viewGeographicalCoordinatesSchema = {};
+    this.viewGeographicalCoordinatesData = {};
+    this.viewVeggiesSchema = {};
+    this.viewVeggiesData = {};
   }
 }

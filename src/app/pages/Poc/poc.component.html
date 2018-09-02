@@ -11,7 +11,7 @@
     ></cwc-combobox>
   </aside>
   <article class="content">
-    <form-generator *ngIf="(viewSchema | json) != '{}'" [schema]="viewSchema" [value]="viewData" (onSubmit)="onFormSubmit($event)">
+    <form-generator *ngIf="(viewPersonSchema | json) != '{}'" [schema]="viewPersonSchema" [value]="viewPersonData" (onSubmit)="onFormSubmit($event)">
         <cwc-inlineedit for="string"></cwc-inlineedit>
         <cwc-inlineedit for="integer"></cwc-inlineedit>
         <cwc-inlineedit for="number"></cwc-inlineedit>
@@ -21,5 +21,28 @@
         <checkbox-generator for="boolean"></checkbox-generator>
         <cwc-wysiwyg-editor for="textarea"></cwc-wysiwyg-editor>
     </form-generator>
+    <form-generator *ngIf="(viewGeographicalCoordinatesSchema | json) != '{}'" [schema]="viewGeographicalCoordinatesSchema" [value]="viewGeographicalCoordinatesData" (onSubmit)="onFormSubmit($event)">
+        <cwc-inlineedit for="string"></cwc-inlineedit>
+        <cwc-inlineedit for="integer"></cwc-inlineedit>
+        <cwc-inlineedit for="number"></cwc-inlineedit>
+        <cwc-datepicker for="date"></cwc-datepicker>
+        <cwc-autocomplete-select for="autocomplete"></cwc-autocomplete-select>
+        <cwc-combobox for="dropdown"></cwc-combobox>
+        <checkbox-generator for="boolean"></checkbox-generator>
+        <cwc-wysiwyg-editor for="textarea"></cwc-wysiwyg-editor>
+    </form-generator>
+    <form-generator *ngIf="(viewVeggiesSchema | json) != '{}'" [schema]="viewVeggiesSchema" [value]="viewVeggiesData" (onSubmit)="onFormSubmit($event)">
+        <cwc-inlineedit for="string"></cwc-inlineedit>
+        <cwc-inlineedit for="integer"></cwc-inlineedit>
+        <cwc-inlineedit for="number"></cwc-inlineedit>
+        <cwc-datepicker for="date"></cwc-datepicker>
+        <cwc-autocomplete-select for="autocomplete"></cwc-autocomplete-select>
+        <cwc-combobox for="dropdown"></cwc-combobox>
+        <checkbox-generator for="boolean"></checkbox-generator>
+        <cwc-wysiwyg-editor for="textarea"></cwc-wysiwyg-editor>
+    </form-generator>
+    <hr />
+    <h3>Data:</h3>
+    <pre *ngIf="(showFormData | json) != '{}'"><code>{{ showFormData | json }}</code>  </pre>
   </article>
 </div>
