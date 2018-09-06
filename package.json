@@ -24,6 +24,7 @@
         "@angular/router": "^5.2.0",
         "@ui-guys/form-generator": "^0.2.25",
         "@ui-guys/stencil-bs-ui-lib": "^0.8.59",
+        "classlist.js": "^1.1.20150312",
         "core-js": "^2.4.1",
         "rxjs": "^5.5.12",
         "zone.js": "^0.8.19"
