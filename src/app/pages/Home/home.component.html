@@ -13,21 +13,26 @@
 
                 <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
                     <form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)">
-                        <cwc-inlineedit for="string"></cwc-inlineedit>
-                        <cwc-inlineedit for="integer"></cwc-inlineedit>
-                        <cwc-datepicker for="date"></cwc-datepicker>
-                        <cwc-autocomplete-select for="autocomplete"></cwc-autocomplete-select>
-                        <cwc-combobox for="dropdown"></cwc-combobox>
-                        <checkbox-generator for="boolean"></checkbox-generator>
-                        <cwc-wysiwyg-editor for="textarea"></cwc-wysiwyg-editor>
+                      <checkbox-generator for="boolean"></checkbox-generator>
+                      <cwc-inlineedit for="string"></cwc-inlineedit>
+                      <cwc-inlineedit-textarea for="data/properties/description"></cwc-inlineedit-textarea>
+                      <cwc-combobox for="data/properties/combobox"></cwc-combobox>
+                      <cwc-wysiwyg-editor
+                        for="data/properties/wysiwygEditor"
+                        [attr.props]="wysiwygProps"
+                      ></cwc-wysiwyg-editor>
+                      <cwc-autocomplete-select
+                        for="array"
+                        [attr.props]="autocompleteProps"
+                      ></cwc-autocomplete-select>
                     </form-generator>
                 </div>
 
-                <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
+                <!-- <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
                     <form-generator [schema]="secondSchema" [value]="secondForm" (onSubmit)="onFormSubmit($event)">
                       <cwc-combobox for="dropdown"></cwc-combobox>
                     </form-generator>
-                </div>
+                </div> -->
 
                 <div class="col-lg-12 mb-4 border-top info-container" style="overflow-y: scroll; height:100vh; background-color: #eee;">
                     <h1>READ ME</h1>

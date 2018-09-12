@@ -22,6 +22,8 @@ export class PocComponent {
   geographicalCoordinatesData: any;
   veggiesData: any;
 
+  autocompleteProps: any;
+
   constructor() {
     this.selectInputData = ["Person", "Geographical Data", "Veggies"];
 
@@ -34,16 +36,19 @@ export class PocComponent {
         "firstName": {
           "$id": "data/properties/firstName",
           "type": "string",
+          "title": "First Name",
           "description": "The person's first name."
         },
         "lastName": {
           "$id": "data/properties/lastName",
           "type": "string",
+          "title": "Last Name",
           "description": "The person's last name."
         },
         "age": {
           "$id": "data/properties/age",
           "type": "integer",
+          "title": "Age",
           "description": "Age in years which must be equal to or greater than zero.",
           "minimum": 0
         }
@@ -54,22 +59,26 @@ export class PocComponent {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Longitude and Latitude Values",
       "description": "A geographical coordinate.",
-      "required": [ "latitude", "longitude" ],
       "type": "object",
       "properties": {
         "latitude": {
           "$id": "data/properties/latitude",
           "type": "number",
+          "title": "Latitude",
+          "description": "Latitude Description",
           "minimum": -90,
           "maximum": 90
         },
         "longitude": {
           "$id": "data/properties/longitude",
           "type": "number",
+          "title": "Longitude",
+          "description": "Longitude Description",
           "minimum": -180,
           "maximum": 180
         }
-      }
+      },
+      "required": [ "latitude", "longitude" ]
     };
     this.veggiesSchema = {
       "id": "https://example.com/arrays.schema.json",
@@ -80,7 +89,8 @@ export class PocComponent {
         "fruits": {
           "$id": "data/properties/fruits",
           "type": "array",
-          "arrayType": "autocomplete",
+          "title": "Fruits",
+          "description": "Fruits Description",
           "items": {
             "type": "string"
           }
@@ -88,7 +98,8 @@ export class PocComponent {
         "vegetables": {
           "$id": "data/properties/vegetables",
           "type": "array",
-          "arrayType": "autocomplete",
+          "title": "Vegetables",
+          "description": "Vegetables Description",
           "items": { "$ref": "#/definitions/veggie" }
         }
       },
@@ -106,9 +117,7 @@ export class PocComponent {
               "description": "Do I like this vegetable?"
             }
           },
-          "searchKey": "veggieName",
-          "required": [ "veggieName", "veggieLike" ],
-          "placeholder": "Search something e.g. 'Argentina'"
+          "required": [ "veggieName", "veggieLike" ]
         }
       }
     };
@@ -135,9 +144,14 @@ export class PocComponent {
         }
       ]
     };
+
+    this.autocompleteProps = JSON.stringify({
+      searchKey: 'veggieName'
+    });
   }
 
   onSelect = (e) => {
+    console.log(e.detail.value);
     switch (e.detail.value) {
       case 'Person':
         this.clearData();

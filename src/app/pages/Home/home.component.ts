@@ -8,21 +8,64 @@ export class HomeComponent {
   form: any;
   secondSchema: any;
   secondForm: any;
+  wysiwygProps: any;
+  autocompleteProps: any;
 
   constructor() {
     this.schema = {
       "type": "object",
-      "required": ["checkbox", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "dropdown", "autocomplete", "wysiwygEditor"],
       "properties": {
+        "checkbox": {
+          "$id": "data/properties/checkbox",
+          "type": "boolean",
+          "title": "Checkbox",
+          "description": "Check Me"
+        },
+        "title": {
+          "$id": "data/properties/title",
+          "type": "string",
+          "title": "Title",
+          "description": "Please provide a title for this"
+        },
+        "authorFirstName": {
+          "$id": "data/properties/authorFirstName",
+          "type": "string",
+          "title": "First Name",
+          "description": "Please provide your first name"
+        },
+        "authorLastName": {
+          "$id": "data/properties/authorLastName",
+          "type": "string",
+          "title": "Last Name",
+          "description": "Please provide your last name"
+        },
+        "description": {
+          "$id": "data/properties/description",
+          "type": "string",
+          "title": "Description",
+          "description": "Please provide a long description"
+        },
+        "combobox": {
+          "$id": "data/properties/combobox",
+          "type": "string",
+          "title": "Combobox",
+          "description": "Combobox Description",
+          "enum": ["Automatic", "Manual"]
+        },
+        "wysiwygEditor": {
+          "$id": "data/properties/wysiwygEditor",
+          "type": "string",
+          "title": "Wysiwyg Editor",
+          "description": "Wysiwyg Editor Description",
+        },
         "autocomplete": {
           "$id": "data/properties/autocomplete",
           "type": "array",
-          "arrayType": "autocomplete",
+          "title": "Autocomplete",
+          "description": "Autocomplete Decription",
           "items": {
             "$id": "/properties/autocomplete/items",
             "type": "object",
-            "placeholder": "Search something e.g. 'Argentina'",
-            "searchKey": "data.name",
             "enum": [
               {
                 "type": 'country',
@@ -47,102 +90,30 @@ export class HomeComponent {
               }
             ]
           }
-        },
-        "checkbox": {
-          "$id": "data/properties/checkbox",
-          "type": "boolean",
-        },
-        "duration": {
-          "$id": "data/properties/duration",
-          "type": "object",
-          "properties": {
-            "min": {
-              "$id": "data/properties/duration/properties/min",
-              "type": "integer",
-              "placeholder": "Min Value"
-            },
-            "max": {
-              "$id": "data/properties/duration/properties/max",
-              "type": "integer",
-              "placeholder": "Max Value",
-            }
-          }
-        },
-        "date": {
-          "$id": "data/properties/date",
-          "type": "object",
-          "format": "date",
-          "placeholder": "Select a Date",
-          "startDate": {
-            "$id": "data/properties/date/startDate",
-            "type": "string"
-          },
-          "endDate": {
-            "$id": "data/properties/date/endDate",
-            "type": "string"
-          },
-          "lang": {
-            "$id": "data/properties/date/lang",
-            "type": "string"
-          },
-          "dateFormat": {
-            "$id": "data/properties/date/dateFormat",
-            "type": "string"
-          }
-        },
-        "startDateString": {
-          "$id": "data/properties/startDateString",
-          "type": "string",
-          "placeholder": "Start Date"
-        },
-        "endDateString": {
-          "$id": "data/properties/endDateString",
-          "type": "string",
-          "placeholder": "End Date"
-        },
-        "dropdown": {
-          "$id": "data/properties/dropdown",
-          "type": "array",
-          "arrayType": "dropdown",
-          "items": {
-            "$id": "/properties/dropdown/items",
-            "type": "string",
-            "buttonText": "",
-            "buttonLeftPosition": false,
-            "placeholder": "Select a value",
-            "readonly": true,
-            "enum": ["Automatic", "Manual"]
-          }
-        },
-        "wysiwygEditor": {
-          "$id": "data/properties/wysiwygEditor",
-          "type": "string",
-          "stringType": "textarea",
-          "fencing": true,
-          "html": true,
-          "markdown": true,
-          "wysiwyg": true
         }
-      }
+      },
+      "required": [
+        "checkbox",
+        "title",
+        "authorFirstName",
+        "authorLastName",
+        "description",
+        "combobox",
+        "wysiwygEditor",
+        "autocomplete"
+      ],
+      "definitions": {}
     };
 
     this.form = {
-      "autocomplete": [],
       "checkbox": false,
-      "duration": {
-        "min": 5,
-        "max": 10
-      },
-      "date": {
-        "startDate": "03/25/2018",
-        "endDate": "04/12/2018",
-        "lang": "en",
-        "dateFormat": "MM.DD.YYYY"
-      },
-      "startDateString": "2007-08-31T16:47+00:00",
-      "endDateString": "2007-08-31T16:47+00:00",
-      "dropdown": [],
-      "wysiwygEditor": "<strong>Initial Text</strong>"
+      "title": "My Title",
+      "authorFirstName": "John",
+      "authorLastName": "Doe",
+      "description": "Lorem ipsum",
+      "combobox": "",
+      "wysiwygEditor": "<strong>Initial Text</strong>",
+      "autocomplete": []
     };
 
     this.secondSchema = {
@@ -341,6 +312,17 @@ export class HomeComponent {
       "dropdown3": [],
       "dropdown4": []
     };
+
+    this.wysiwygProps = JSON.stringify({
+      fencing: true,
+      html: true,
+      markdown: true,
+      wysiwyg: true
+    });
+
+    this.autocompleteProps = JSON.stringify({
+      searchKey: 'data.name'
+    });
   }
 
   onFormSubmit(event) {
