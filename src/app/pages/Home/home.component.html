@@ -1,272 +1,293 @@
 <section class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="jumbotron jumbotron-fluid">
-                <blockquote class="blockquote text-center">
-                    <h2 class="mb-0">StencilJs - Angular Integration</h2>
-                </blockquote>
-            </div>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="col-lg-12 mt-5 mb-5 text-center">
-                    <h1>Form Generator</h1>
-                </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="jumbotron jumbotron-fluid">
+        <blockquote class="blockquote text-center">
+          <h2 class="mb-0">StencilJs - Angular Integration</h2>
+        </blockquote>
+      </div>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="col-lg-12 mt-5 mb-5 text-center">
+          <h1>Form Generator</h1>
+        </div>
 
-                <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
-                    <form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)">
-                      <checkbox-generator for="boolean"></checkbox-generator>
-                      <cwc-inlineedit for="string"></cwc-inlineedit>
-                      <cwc-inlineedit-textarea for="data/properties/description"></cwc-inlineedit-textarea>
-                      <cwc-combobox for="data/properties/combobox"></cwc-combobox>
-                      <cwc-wysiwyg-editor
-                        for="data/properties/wysiwygEditor"
-                        [attr.props]="wysiwygProps"
-                      ></cwc-wysiwyg-editor>
-                      <cwc-autocomplete-select
-                        for="array"
-                        [attr.props]="autocompleteProps"
-                      ></cwc-autocomplete-select>
-                    </form-generator>
-                </div>
+        <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
+          <form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)">
+            <checkbox-generator for="boolean"></checkbox-generator>
+            <cwc-inlineedit for="string"></cwc-inlineedit>
+            <cwc-inlineedit-textarea for="data/properties/description"></cwc-inlineedit-textarea>
+            <cwc-combobox for="data/properties/combobox"></cwc-combobox>
+            <cwc-wysiwyg-editor
+              for="data/properties/wysiwygEditor"
+              [attr.props]="wysiwygProps | json"
+            ></cwc-wysiwyg-editor>
+            <cwc-autocomplete-select
+              for="array"
+              [attr.props]="autocompleteProps | json"
+            ></cwc-autocomplete-select>
+            <cwc-autocomplete-select
+              for="data/properties/vegetables"
+              [attr.props]="vegetablesProps | json"
+            ></cwc-autocomplete-select>
+          </form-generator>
+        </div>
 
-                <!-- <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
-                    <form-generator [schema]="secondSchema" [value]="secondForm" (onSubmit)="onFormSubmit($event)">
-                      <cwc-combobox for="dropdown"></cwc-combobox>
-                    </form-generator>
-                </div> -->
+        <!-- <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
+          <form-generator [schema]="secondSchema" [value]="secondForm" (onSubmit)="onFormSubmit($event)">
+            <cwc-combobox for="dropdown"></cwc-combobox>
+          </form-generator>
+        </div> -->
 
-                <div class="col-lg-12 mb-4 border-top info-container" style="overflow-y: scroll; height:100vh; background-color: #eee;">
-                    <h1>READ ME</h1>
-                    <p>The HTML structure of the Json Schema Form is the following:</p>
-                    <pre>
-                        <code>
-                            &lt;form-generator [schema]="schema" [value]="form"&gt;
-                                &#9;&lt;cwc-inlineedit for="string"&gt;&lt;/cwc-inlineedit&gt;
-                                &#9;&lt;cwc-inlineedit for="integer"&gt;&lt;/cwc-inlineedit&gt;
-                                &#9;&lt;cwc-datepicker for="date"&gt;&lt;/cwc-datepicker&gt;
-                                &#9;&lt;cwc-autocomplete-select for="autocomplete"&gt;&lt;/cwc-autocomplete-select&gt;
-                                &#9;&lt;cwc-combobox for="dropdown"&gt;&lt;/cwc-combobox&gt;
-                                &#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;
-                                &#9;&lt;cwc-wysiwyg-editor for="textarea"&gt;&lt;/cwc-wysiwyg-editor&gt;
-                            &lt;/form-generator&gt;
-                        </code>
-                    </pre>
+        <div class="col-lg-12 mb-4 border-top info-container" style="overflow-y: scroll; height:100vh; background-color: #eee;">
+          <h1>READ ME</h1>
+          <p>The HTML structure of the Json Schema Form is the following:</p>
+          <pre>
+            <code>
+              &lt;form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)"&gt;
+                &#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;
+                &#9;&lt;cwc-inlineedit for="string"&gt;&lt;/cwc-inlineedit&gt;
+                &#9;&lt;cwc-inlineedit-textarea for="data/properties/description"&gt;&lt;/cwc-inlineedit&gt;
+                &#9;&lt;cwc-combobox for="data/properties/combobox"&gt;&lt;/cwc-combobox&gt;
+                &#9;&lt;cwc-wysiwyg-editor
+                  &#9;&#9;for="data/properties/wysiwygEditor"
+                  &#9;&#9;[attr.props]=&#123;wysiwygProps | json&#125;
+                &#9;&gt;&lt;/cwc-wysiwyg-editor&gt;
+                &#9;&lt;cwc-autocomplete-select
+                  &#9;&#9;for="array"
+                  &#9;&#9;[attr.props]=&#123;autocompleteProps | json&#125;
+                &#9;&gt;&lt;/cwc-autocomplete-select&gt;
+                &#9;&lt;cwc-autocomplete-select
+                  &#9;&#9;for="data/properties/vegetables"
+                  &#9;&#9;[attr.props]=&#123;vegetablesProps | json&#125;
+                &#9;&gt;&lt;/cwc-autocomplete-select&gt;
+              &lt;/form-generator&gt;
+            </code>
+          </pre>
 
-                    <p>The root <code>&lt;form-generator /&gt;</code> accepts 2 props:</p>
-                    <ul>
-                        <li>[schema]: Form definition object.</li>
-                        <li>[value]: Initial Form object values.</li>
-                    </ul>
+          <p>The root <code>&lt;form-generator /&gt;</code> has 3 props:</p>
+          <ul>
+            <li>[schema]: Form definition object.</li>
+            <li>[value]: Initial Form object values.</li>
+            <li>(onSubmit): Function callback upon submitting the form, passing an event as a param.</li>
+          </ul>
 
-                    <p><strong>Schema Object:</strong></p>
-                    <p>The most important and mandatory properties of the object are the <code>"type"</code> and <code>"$id"</code> property.</p>
-                    <p><code>"$id"</code> must be unique for every property.</p>
-                    <p><code>"type"</code> accepts values like: string, integer, boolean, array and object.</p>
+          <p>The Form Generator will generate a form, based on a given Json Schema, using the following components:</p>
+          <ul>
+            <li>
+              <code>&#9;&lt;checkbox-generator for="boolean"&gt;&lt;/checkbox-generator&gt;</code><br />
+              <small><i>Will generate an input type checkbox. Used for type boolean schema prop.</i></small>
+            </li>
+            <li>
+              <code>&#9;&lt;cwc-inlineedit for="string"&gt;&lt;/cwc-inlineedit&gt;</code><br />
+              <small><i>Will generate an input type text. Used for type string schema prop.</i></small>
+            </li>
+            <li>
+              <code>&#9;&lt;cwc-inlineedit-textarea for="string"&gt;&lt;/cwc-inlineedit&gt;</code><br />
+              <small><i>Will generate a textarea element. Used for type string schema prop.</i></small>
+            </li>
+            <li>
+              <code>&#9;&lt;cwc-combobox for="string"&gt;&lt;/cwc-combobox&gt;</code><br />
+              <small><i>Will generate a dropdown select element. Used for type string schema prop with enum array property.</i></small>
+            </li>
+            <li>
+              <code>
+                &#9;&lt;cwc-wysiwyg-editor
+                  &#9;&#9;for="string"
+                  &#9;&#9;[attr.props]=&#123;wysiwygProps | json&#125;
+                &#9;&gt;&lt;/cwc-wysiwyg-editor&gt;
+              </code><br />
+              <i>Will generate a wysiwyg editor. Used for type string schema prop.</i><br />
+              <i>It must be passed a JSON.stringifiy() object to the props attribute.</i><br />
+              <i>
+                <code>
+                  const wysiwygProps = &#123;
+                    &#9;fencing: true,
+                    &#9;html: true,
+                    &#9;markdown: true,
+                    &#9;wysiwyg: true
+                  &#125;
+                </code>
+              </i>
+            </li>
+            <li>
+              <code>
+                &#9;&lt;cwc-autocomplete-select
+                  &#9;&#9;for="array"
+                  &#9;&#9;[attr.props]=&#123;autocompleteProps | json&#125;
+                &#9;&gt;&lt;/cwc-autocomplete-select&gt;
+              </code><br />
+              <i>Will generate an autocomplete dropdown select element. Used for type array schema prop.</i><br />
+              <i>It must be passed a JSON.stringifiy() object to the props attribute.</i><br />
+              <i>
+                <code>
+                  const autocompleteProps = &#123;
+                    &#9;searchKey: "data.name"
+                  &#125;
+                </code>
+              </i>
+            </li>
+          </ul>
 
-                    <br>
+          <p>Every component has a 'for' attribute to specify the type of schema prop you want it to refer to (boolean, string, array) or you can pass the $id of the schema prop you want to target specifically.</p>
 
-                    <p><i>Types:</i></p>
-                    <ul>
-                        <li>
-                            <code>&#123; "type": "string" &#125;</code> and <code>&#123; "type": "integer" &#125;</code> &#61;&gt;<br />
-                            Will generate, using the element <code>&lt;cwc-inlineedit for="string/integer"&gt;</code>,
-                            an input of type string, respectively of type number.<br />
-                            Both can have a property called <strong>"placeholder"</strong> for the input.
-                        </li>
-                        <li>
-                            <code>&#123; "type": "string" &#125;</code> with <strong>"stringType": "textarea"</strong> property &#61;&gt;<br />
-                            Will generate, using the element <code>&lt;cwc-wysiwyg-editor for="textarea"&gt;</code>, a wysiwyg editor.<br />
-                            It has the following optional boolean properties:<br />
-                            <strong>"fencing"</strong>: Prefers to wrap code blocks in "fences" (GitHub style) instead of indenting code blocks using four spaces. Defaults to true.<br />
-                            <strong>"html"</strong>: Enables HTML user input mode. Defaults to true.<br />
-                            <strong>"markdown"</strong>: Enables Markdown user input mode. Defaults to true.<br />
-                            <strong>"wysiwyg"</strong>: Enables WYSIWYG user input mode. Defaults to true.<br />
-                        </li>
-                        <li>
-                            <code>&#123; "type": "boolean" &#125;</code> &#61;&gt;<br />
-                            Will generate, using the element <code>&lt;checkbox-generator for="boolean"&gt;</code>, an input of type checkbox.
-                        </li>
-                        <li>
-                            <code>&#123; "type": "object" &#125;</code> &#61;&gt;<br />
-                            Is a container type property which can hold, using the <strong>"properties"</strong> property, other <strong>"type"</strong> objects.
-                        </li>
-                        <li>
-                            <code>&#123; "type": "object" &#125;</code> with <strong>"format": "date"</strong> property &#61;&gt;<br />
-                            Is a special type of <code>&#123; "type": "object" &#125;</code> which has no <strong>"properties"</strong> property.<br />
-                            Will generate, using the element <code>&lt;cwc-datepicker for="date"&gt;</code>, a custom input built to hold a date-range string.<br />
-                            It has the following mandatory properties:
-                            <strong>"startDate"</strong>, <strong>"endDate"</strong>, <strong>"lang"</strong>, <strong>"dateFormat"</strong>
-                            used to pass data to the <code>&lt;cwc-datepicker for="date"&gt;</code> element.
-                            Each of them must have <strong>"$id"</strong> and <strong>"type" (string/integer)</strong> properties used for validation.<br />
-                            It can have a property called <strong>"placeholder"</strong> for the input.
-                        </li>
-                        <li>
-                            <code>&#123; "type": "array" &#125;</code> with <strong>"arrayType": "dropdown"</strong> property &#61;&gt;<br />
-                            Will generate, using the element <code>&lt;cwc-combobox for="dropdown"&gt;</code>, a dropdown button and a readonly input.<br />
-                            It has a mandatory property <strong>"items"</strong> where the values of the dropdown are passed using the <strong>"enum"</strong> property.<br />
-                            In the "items" property, the <strong>"type"</strong> property is used to define the type of the enum values ("string", "integer" etc).
-                            The property <strong>"buttonText"</strong> will name the dropdown button and it can have a property called <strong>"placeholder"</strong> for the input.
-                        </li>
-                        <li>
-                            <code>&#123; "type": "array" &#125;</code> with <strong>"arrayType": "autocomplete"</strong> property &#61;&gt;<br />
-                            Will generate, using the element <code>&lt;cwc-autocomplete-select for="autocomplete"&gt;</code>, a custom input.<br />
-                            When the user starts typing, a dropdown window will pop up letting the user choose how many values he wants from the returned values.<br />
-                            It has the same <strong>"items"</strong> property as the "arrayType": "dropdown" except it has one more property called <strong>"searchKey"</strong>,
-                            only if the values of the <strong>"enum"</strong> property are objects,
-                            used to tell the component on which key to search for in the object given in the <strong>"enum"</strong> property.
-                        </li>
-                    </ul>
+          <br>
 
-                    <br>
-
-                    <p>The following Schema Object is used for this example:</p>
-                    <pre>
-                        <code>
+          <p><strong>Schema Object:</strong></p>
+          <p>The following Schema Object is used for this example:</p>
+          <pre>
+            <code>
+              &#123;
+                "type": "object",
+                "properties": &#123;
+                  "checkbox": &#123;
+                    "$id": "data/properties/checkbox",
+                    "type": "boolean",
+                    "title": "Checkbox",
+                    "description": "Check Me"
+                  &#125;,
+                  "title": &#123;
+                    "$id": "data/properties/title",
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Please provide a title for this"
+                  &#125;,
+                  "authorFirstName": &#123;
+                    "$id": "data/properties/authorFirstName",
+                    "type": "string",
+                    "title": "First Name",
+                    "description": "Please provide your first name"
+                  &#125;,
+                  "authorLastName": &#123;
+                    "$id": "data/properties/authorLastName",
+                    "type": "string",
+                    "title": "Last Name",
+                    "description": "Please provide your last name"
+                  &#125;,
+                  "description": &#123;
+                    "$id": "data/properties/description",
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Please provide a long description"
+                  &#125;,
+                  "combobox": &#123;
+                    "$id": "data/properties/combobox",
+                    "type": "string",
+                    "title": "Combobox",
+                    "description": "Combobox Description",
+                    "enum": ["Automatic", "Manual"]
+                  &#125;,
+                  "wysiwygEditor": &#123;
+                    "$id": "data/properties/wysiwygEditor",
+                    "type": "string",
+                    "title": "WysiwygEditor Editor",
+                    "description": "Wysiwyg Editor Description",
+                    "enum": ["Automatic", "Manual"]
+                  &#125;,
+                  "autocomplete": &#123;
+                    "$id": "data/properties/autocomplete",
+                    "type": "array",
+                    "title": "Autocomplete",
+                    "description": "Autocomplete Decription",
+                    "items": &#123;
+                        "$id": "/properties/autocomplete/items",
+                        "type": "object",
+                        "enum": [
                             &#123;
-                                "type": "object",
-                                "required": ["checkbox", "min", "max", "startDate", "endDate", "startDateString", "endDateString", "dropdown", "autocomplete", wysiwygEditor],
-                                "properties": &#123;
-                                    "autocomplete": &#123;
-                                        "$id": "data/properties/autocomplete",
-                                        "type": "array",
-                                        "arrayType": "autocomplete",
-                                        "items": &#123;
-                                            "$id": "/properties/sources/items",
-                                            "type": "object",
-                                            "placeholder": "Search something e.g. 'Argentina'",
-                                            "searchKey": "data.name",
-                                            "enum": [
-                                                &#123;
-                                                    "type": 'country',
-                                                    "data": &#123;
-                                                        "name": 'Austria',
-                                                        "capital": 'Vienna'
-                                                    &#125;
-                                                &#125;,
-                                                &#123;
-                                                    "type": 'country',
-                                                    "data": &#123;
-                                                        "name": 'Australia',
-                                                        "capital": 'Canberra'
-                                                    &#125;
-                                                &#125;,
-                                                &#123;
-                                                    "type": 'country',
-                                                    "data": &#123;
-                                                        "name": 'Argentina',
-                                                        "capital": 'Buenos Aires'
-                                                    &#125;
-                                                &#125;
-                                            ]
-                                        &#125;
-                                    &#125;
-                                    "checked": &#123;
-                                        "$id": "data/properties/checkbox",
-                                        "type": "boolean"
-                                    &#125;,
-                                    "duration": &#123;
-                                        "$id": "data/properties/duration",
-                                        "type": "object",
-                                        "properties": &#123;
-                                            "min": &#123;
-                                                "$id": "data/properties/duration/properties/min",
-                                                "type": "integer",
-                                                "placeholder": "Min Value"
-                                            &#125;,
-                                            "max": &#123;
-                                                "$id": "data/properties/duration/properties/max",
-                                                "type": "integer",
-                                                "placeholder": "Max Value"
-                                            &#125;
-                                        &#125;
-                                    &#125;,
-                                    "date": &#123;
-                                        "$id": "data/properties/date",
-                                        "type": "object",
-                                        "format": "date",
-                                        "placeholder": "Select a Date",
-                                        "startDate": &#123;
-                                            "$id": "data/properties/date/startDate",
-                                            "type": "string"
-                                        &#125;,
-                                        "endDate": &#123;
-                                            "$id": "data/properties/date/endDate",
-                                            "type": "string"
-                                        &#125;,
-                                        "lang": &#123;
-                                            "$id": "data/properties/date/lang",
-                                            "type": "string"
-                                        &#125;,
-                                        "dateFormat": &#123;
-                                            "$id": "data/properties/date/dateFormat",
-                                            "type": "string"
-                                        &#125;
-                                    &#125;,
-                                    "startDateString": &#123;
-                                        "$id": "data/properties/startDate",
-                                        "type": "string",
-                                        "placeholder": "Start Date"
-                                    &#125;,
-                                    "endDateString": &#123;
-                                        "$id": "data/properties/endDate",
-                                        "type": "string",
-                                        "placeholder": "End Date"
-                                    &#125;,
-                                    "dropdown": &#123;
-                                        "$id": "data/properties/dropdown",
-                                        "type": "array",
-                                        "arrayType": "dropdown",
-                                        "items": &#123;
-                                            "$id": "/properties/sources/items",
-                                            "type": "string",
-                                            "buttonText": "Select",
-                                            "placeholder": "Select",
-                                            "enum": ["Automatic", "Manual"]
-                                        &#125;
-                                    &#125;,
-                                    "wysiwygEditor": &#123;
-                                        "$id": "data/properties/wysiwygEditor",
-                                        "type": "string",
-                                        "stringType": "textarea",
-                                        "fencing": true,
-                                        "html": true,
-                                        "markdown": true,
-                                        "wysiwyg": true
-                                    &#125;
+                                "type": 'country',
+                                "data": &#123;
+                                    "name": 'Austria',
+                                    "capital": 'Vienna'
+                                &#125;
+                            &#125;,
+                            &#123;
+                                "type": 'country',
+                                "data": &#123;
+                                    "name": 'Australia',
+                                    "capital": 'Canberra'
+                                &#125;
+                            &#125;,
+                            &#123;
+                                "type": 'country',
+                                "data": &#123;
+                                    "name": 'Argentina',
+                                    "capital": 'Buenos Aires'
                                 &#125;
                             &#125;
-                        </code>
-                    </pre>
+                        ]
+                    &#125;
+                  &#125;
+                  "vegetables": &#123;
+                    "$id": "data/properties/vegetables",
+                    "type": "array",
+                    "title": "Vegetables",
+                    "description": "Vegetables Decription",
+                    "items": &#123; "$ref": "#/definitions/veggie" &#125;
+                  &#125;
+                &#125;,
+                "required": [
+                  "checkbox",
+                  "title",
+                  "authorFirstName",
+                  "authorLastName",
+                  "description",
+                  "combobox",
+                  "wysiwygEditor",
+                  "autocomplete",
+                  "vegetables"
+                ],
+                "definitions": &#123;
+                  "veggie": &#123;
+                    "$id": "data/properties/vegetables#/definitions/veggie",
+                    "type": "object",
+                    "properties": &#123;
+                      "veggieName": &#123;
+                        "type": "string",
+                        "description": "The name of the vegetable."
+                      &#125;,
+                      "veggieLike": &#123;
+                        "type": "boolean",
+                        "description": "Do I like this vegetable?"
+                      &#125;
+                    &#125;,
+                    "required": [ "veggieName", "veggieLike" ]
+                  &#125;
+                &#125;
+              &#125;
+            </code>
+          </pre>
 
-                    <br>
+          <br>
 
-                    <p><strong>Form Object:</strong></p>
-                    <p>The actual form object that respects the schema.</p>
-                    <p>The inputs can have predefined values or be empty and filled in by the user or dynamicly within the code.</p>
-                    <p>The following Form Object is used for this example:</p>
-                    <pre>
-                        <code>
-                            &#125;
-                            "autocomplete": [],
-                                "checked": false,
-                                "duration": &#125;
-                                    "min": 5,
-                                    "max": 10
-                                &#125;,
-                                "date": &#125;
-                                    "startDate": "03/25/2018",
-                                    "endDate": "04/12/2018",
-                                    "lang": "en",
-                                    "dateFormat": "MM.DD.YYYY"
-                                &#125;,
-                                "startDateString": "2007-08-31T16:47+00:00",
-                                "endDateString": "2007-08-31T16:47+00:00",
-                                "dropdown": [],
-                                "wysiwygEditor": "&lt;strong&gt;Initial Text&lt;/strong&gt;"
-                            &#125;
-                        </code>
-                    </pre>
-                </div>
-            </div>
+          <p><strong>Form Object:</strong></p>
+          <p>The actual form object that respects the schema.</p>
+          <p>The inputs can have predefined values or be empty and filled in by the user or dynamicly within the code.</p>
+          <p>The following Form Object is used for this example:</p>
+          <pre>
+            <code>
+              &#125;
+                "checkbox": false,
+                "title": "My Title",
+                "authorFirstName": "John",
+                "authorLastName": "Doe",
+                "description": "Lorem ipsum",
+                "combobox": "",
+                "wysiwygEditor": "&lt;strong&gt;Initial Text&lt;/strong&gt;",
+                "autocomplete": [],
+                "vegetables": [
+                  &#125;
+                    "veggieName": "potato",
+                    "veggieLike": true
+                  &#125;,
+                  &#125;
+                    "veggieName": "broccoli",
+                    "veggieLike": false
+                  &#125;
+                ]
+              &#125;
+            </code>
+          </pre>
         </div>
+      </div>
     </div>
+  </div>
 </section>

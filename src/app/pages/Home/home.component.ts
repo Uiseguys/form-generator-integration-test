@@ -10,6 +10,7 @@ export class HomeComponent {
   secondForm: any;
   wysiwygProps: any;
   autocompleteProps: any;
+  vegetablesProps: any;
 
   constructor() {
     this.schema = {
@@ -90,6 +91,13 @@ export class HomeComponent {
               }
             ]
           }
+        },
+        "vegetables": {
+          "$id": "data/properties/vegetables",
+          "type": "array",
+          "title": "Vegetables",
+          "description": "Vegetables Decription",
+          "items": { "$ref": "#/definitions/veggie" }
         }
       },
       "required": [
@@ -100,9 +108,26 @@ export class HomeComponent {
         "description",
         "combobox",
         "wysiwygEditor",
-        "autocomplete"
+        "autocomplete",
+        "vegetables"
       ],
-      "definitions": {}
+      "definitions": {
+        "veggie": {
+          "$id": "data/properties/vegetables#/definitions/veggie",
+          "type": "object",
+          "properties": {
+            "veggieName": {
+              "type": "string",
+              "description": "The name of the vegetable."
+            },
+            "veggieLike": {
+              "type": "boolean",
+              "description": "Do I like this vegetable?"
+            }
+          },
+          "required": [ "veggieName", "veggieLike" ]
+        }
+      }
     };
 
     this.form = {
@@ -113,7 +138,17 @@ export class HomeComponent {
       "description": "Lorem ipsum",
       "combobox": "",
       "wysiwygEditor": "<strong>Initial Text</strong>",
-      "autocomplete": []
+      "autocomplete": [],
+      "vegetables": [
+        {
+          "veggieName": "potato",
+          "veggieLike": true
+        },
+        {
+          "veggieName": "broccoli",
+          "veggieLike": false
+        }
+      ]
     };
 
     this.secondSchema = {
@@ -313,16 +348,18 @@ export class HomeComponent {
       "dropdown4": []
     };
 
-    this.wysiwygProps = JSON.stringify({
+    this.wysiwygProps = {
       fencing: true,
       html: true,
       markdown: true,
       wysiwyg: true
-    });
-
-    this.autocompleteProps = JSON.stringify({
+    };
+    this.autocompleteProps = {
       searchKey: 'data.name'
-    });
+    };
+    this.vegetablesProps = {
+      searchKey: "veggieName"
+    };
   }
 
   onFormSubmit(event) {
