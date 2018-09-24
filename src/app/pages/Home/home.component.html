@@ -12,24 +12,15 @@
         </div>
 
         <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">
-          <form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)">
-            <checkbox-generator for="boolean"></checkbox-generator>
+          <cwc-form-generator [schema]="schema" [value]="form" (onSubmit)="onFormSubmit($event)">
+            <cwc-switch for="boolean"></cwc-switch>
             <cwc-inlineedit for="string"></cwc-inlineedit>
             <cwc-inlineedit-textarea for="data/properties/description"></cwc-inlineedit-textarea>
-            <cwc-combobox for="data/properties/combobox"></cwc-combobox>
-            <cwc-wysiwyg-editor
-              for="data/properties/wysiwygEditor"
-              [attr.props]="wysiwygProps | json"
-            ></cwc-wysiwyg-editor>
-            <cwc-autocomplete-select
-              for="array"
-              [attr.props]="autocompleteProps | json"
-            ></cwc-autocomplete-select>
-            <cwc-autocomplete-select
-              for="data/properties/vegetables"
-              [attr.props]="vegetablesProps | json"
-            ></cwc-autocomplete-select>
-          </form-generator>
+            <cwc-textarea for="data/properties/textarea"></cwc-textarea>
+            <cwc-select for="data/properties/select"></cwc-select>
+            <cwc-autocomplete-select for="array" [attr.props]="autocompleteProps | json"></cwc-autocomplete-select>
+            <cwc-autocomplete-select for="data/properties/vegetables" [attr.props]="vegetablesProps | json"></cwc-autocomplete-select>
+          </cwc-form-generator>
         </div>
 
         <!-- <div class="col-lg-10 mb-4 d-block form-generator-container" style="max-width: 60%; margin: 50px auto 50px;">

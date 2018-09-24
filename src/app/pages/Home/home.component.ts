@@ -6,9 +6,8 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   schema: any;
   form: any;
-  secondSchema: any;
-  secondForm: any;
-  wysiwygProps: any;
+  // secondSchema: any;
+  // secondForm: any;
   autocompleteProps: any;
   vegetablesProps: any;
 
@@ -46,18 +45,18 @@ export class HomeComponent {
           "title": "Description",
           "description": "Please provide a long description"
         },
-        "combobox": {
-          "$id": "data/properties/combobox",
+        "textarea": {
+          "$id": "data/properties/textarea",
           "type": "string",
-          "title": "Combobox",
-          "description": "Combobox Description",
-          "enum": ["Automatic", "Manual"]
+          "title": "Textarea Description",
+          "description": "Textarea Description",
         },
-        "wysiwygEditor": {
-          "$id": "data/properties/wysiwygEditor",
+        "select": {
+          "$id": "data/properties/select",
           "type": "string",
-          "title": "Wysiwyg Editor",
-          "description": "Wysiwyg Editor Description",
+          "title": "Select",
+          "description": "Select Description",
+          "enum": ["Automatic", "Manual"]
         },
         "autocomplete": {
           "$id": "data/properties/autocomplete",
@@ -106,8 +105,8 @@ export class HomeComponent {
         "authorFirstName",
         "authorLastName",
         "description",
-        "combobox",
-        "wysiwygEditor",
+        "textarea",
+        "select",
         "autocomplete",
         "vegetables"
       ],
@@ -136,8 +135,8 @@ export class HomeComponent {
       "authorFirstName": "John",
       "authorLastName": "Doe",
       "description": "Lorem ipsum",
-      "combobox": "",
-      "wysiwygEditor": "<strong>Initial Text</strong>",
+      "textarea": "Lorem ipsum",
+      "select": "Select",
       "autocomplete": [],
       "vegetables": [
         {
@@ -151,6 +150,7 @@ export class HomeComponent {
       ]
     };
 
+    /*
     this.secondSchema = {
       "type": "object",
       "properties": {
@@ -347,13 +347,8 @@ export class HomeComponent {
       "dropdown3": [],
       "dropdown4": []
     };
+    */
 
-    this.wysiwygProps = {
-      fencing: true,
-      html: true,
-      markdown: true,
-      wysiwyg: true
-    };
     this.autocompleteProps = {
       searchKey: 'data.name'
     };

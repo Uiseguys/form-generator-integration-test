@@ -4,8 +4,14 @@ import { Http, HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-import '@ui-guys/stencil-bs-ui-lib/dist/ui-lib';
-import '@ui-guys/form-generator/dist/form-generator';
+import '@livingui/cwc-autocomplete-select/dist/cwc-autocomplete-select';
+import '@livingui/cwc-dropdown/dist/cwc-dropdown';
+import '@livingui/cwc-form-generator/dist/cwc-form-generator';
+import '@livingui/cwc-inlineedit/dist/cwc-inlineedit';
+import '@livingui/cwc-inlineedit-textarea/dist/cwc-inlineedit-textarea';
+import '@livingui/cwc-select/dist/cwc-select';
+import '@livingui/cwc-switch/dist/cwc-switch';
+import '@livingui/cwc-textarea/dist/cwc-textarea';
 
 // Components
 import { AppComponent } from './app.component';
