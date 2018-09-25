@@ -19,43 +19,56 @@ export class HomeComponent {
           "$id": "data/properties/checkbox",
           "type": "boolean",
           "title": "Checkbox",
-          "description": "Check Me"
+          "description": "Check Me",
+          "groupTitle": "General",
+          "order": 1
         },
         "title": {
           "$id": "data/properties/title",
           "type": "string",
           "title": "Title",
-          "description": "Please provide a title for this"
+          "description": "Please provide a title for this",
+          "order": 2
         },
         "authorFirstName": {
           "$id": "data/properties/authorFirstName",
           "type": "string",
           "title": "First Name",
-          "description": "Please provide your first name"
+          "description": "Please provide your first name",
+          "groupTitle": "General",
+          "order": 3
         },
         "authorLastName": {
           "$id": "data/properties/authorLastName",
           "type": "string",
           "title": "Last Name",
-          "description": "Please provide your last name"
+          "description": "Please provide your last name",
+          "groupTitle": "General",
+          "order": 4
         },
         "description": {
           "$id": "data/properties/description",
           "type": "string",
           "title": "Description",
-          "description": "Please provide a long description"
+          "description": "Please provide a long description",
+          "groupTitle": "General",
+          "order": 5
         },
         "textarea": {
           "$id": "data/properties/textarea",
           "type": "string",
           "title": "Textarea Description",
           "description": "Textarea Description",
+          "groupTitle": "Basic Information",
+          "order": 4
         },
         "select": {
           "$id": "data/properties/select",
           "type": "string",
           "title": "Select",
           "description": "Select Description",
+          "groupTitle": "Basic Information",
+          "order": 3,
           "enum": ["Automatic", "Manual"]
         },
         "autocomplete": {
@@ -63,6 +76,8 @@ export class HomeComponent {
           "type": "array",
           "title": "Autocomplete",
           "description": "Autocomplete Decription",
+          "groupTitle": "Basic Information",
+          "order": 2,
           "items": {
             "$id": "/properties/autocomplete/items",
             "type": "object",
@@ -96,6 +111,8 @@ export class HomeComponent {
           "type": "array",
           "title": "Vegetables",
           "description": "Vegetables Decription",
+          "groupTitle": "Basic Information",
+          "order": 1,
           "items": { "$ref": "#/definitions/veggie" }
         }
       },
