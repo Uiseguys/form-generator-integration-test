@@ -8,6 +8,7 @@ export class HomeComponent {
   form: any;
   // secondSchema: any;
   // secondForm: any;
+  selectProps: any;
   autocompleteProps: any;
   vegetablesProps: any;
 
@@ -20,6 +21,7 @@ export class HomeComponent {
           "type": "boolean",
           "title": "Checkbox",
           "description": "Check Me",
+          'readonly': true,
           "groupTitle": "General",
           "order": 1
         },
@@ -28,6 +30,7 @@ export class HomeComponent {
           "type": "string",
           "title": "Title",
           "description": "Please provide a title for this",
+          'readonly': true,
           "order": 2
         },
         "authorFirstName": {
@@ -35,6 +38,7 @@ export class HomeComponent {
           "type": "string",
           "title": "First Name",
           "description": "Please provide your first name",
+          'readonly': true,
           "groupTitle": "General",
           "order": 3
         },
@@ -43,6 +47,7 @@ export class HomeComponent {
           "type": "string",
           "title": "Last Name",
           "description": "Please provide your last name",
+          'readonly': true,
           "groupTitle": "General",
           "order": 4
         },
@@ -51,6 +56,7 @@ export class HomeComponent {
           "type": "string",
           "title": "Description",
           "description": "Please provide a long description",
+          'readonly': true,
           "groupTitle": "General",
           "order": 5
         },
@@ -59,6 +65,7 @@ export class HomeComponent {
           "type": "string",
           "title": "Textarea Description",
           "description": "Textarea Description",
+          'readonly': true,
           "groupTitle": "Basic Information",
           "order": 4
         },
@@ -67,6 +74,7 @@ export class HomeComponent {
           "type": "string",
           "title": "Select",
           "description": "Select Description",
+          'readonly': true,
           "groupTitle": "Basic Information",
           "order": 3,
           "enum": ["Automatic", "Manual"]
@@ -366,6 +374,10 @@ export class HomeComponent {
     };
     */
 
+    this.selectProps = {
+      asCombobox: true,
+      btnLeftPosition: false
+    };
     this.autocompleteProps = {
       searchKey: 'data.name'
     };
